@@ -749,10 +749,10 @@ struct pluginlink {
 	void (*decodeurl)(unsigned char *s, int allowcr);
 	int (*parsestr) (unsigned char *str, unsigned char **argm, int nitems, unsigned char ** buff, int *inbuf, int *bufsize);
 	struct ace * (*make_ace) (int argc, unsigned char ** argv);
-	void * (*myalloc)(size_t size);
-	void (*myfree)(void *ptr);
-	void *(*myrealloc)(void *ptr, size_t size);
-	char * (*mystrdup)(const char *str);
+	void * (*mallocfunc)(size_t size);
+	void (*freefunc)(void *ptr);
+	void *(*reallocfunc)(void *ptr, size_t size);
+	char * (*strdupfunc)(const char *str);
 	TRAFCOUNTFUNC trafcountfunc;
 	char ** proxy_table;
 	struct schedule ** schedule;

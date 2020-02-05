@@ -138,6 +138,11 @@ void daemonize(void);
 
 #define DEFLOGFORMAT "G%y%m%d%H%M%S.%. %p %E %U %C:%c %R:%r %O %I %h %T"
 
+#define myalloc malloc
+#define myfree free
+#define myrealloc realloc
+#define mystrdup strdup
+
 extern RESOLVFUNC resolvfunc;
 
 extern int wday;
@@ -272,22 +277,6 @@ int connectwithpoll(SOCKET sock, struct sockaddr *sa, SASIZETYPE size, int to);
 
 
 int myrand(void * entropy, int len);
-
-#ifdef WITH_STD_MALLOC
-
-#define myalloc malloc
-#define myfree free
-#define myrealloc realloc
-#define mystrdup strdup
-
-#else
-
-void *myalloc(size_t size);
-void myfree(void *ptr);
-void *myrealloc(void *ptr, size_t size);
-char * mystrdup(const char *str);
-
-#endif
 
 extern char *copyright;
 
